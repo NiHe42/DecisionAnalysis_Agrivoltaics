@@ -31,6 +31,13 @@ n [label = 'Climate change']
       n -> {h f g}
       {j k l} -> i
       {c d} -> {b}
+      
+subgraph test {
+
+o [label ='Increased demand in energy' shape=box fontcolor=grey]
+p [label ='Effects of changed schedule' shape=box fontcolor=grey]
+q [label ='Corruption' shape=box fontcolor=grey]
+}
 
 
 }")
@@ -136,4 +143,12 @@ graph [layout = dot
       i -> e [lhead=cluster_3, weight=1];
 
       }")
+
+Diagramme kombinieren
+Stakeholder Liste + Graph
+Kontakt zu Experten
+Experten in der Uni finden
+Interview mit "Kalibrierfragen"
+Model austesten
+Model erweitern
 
