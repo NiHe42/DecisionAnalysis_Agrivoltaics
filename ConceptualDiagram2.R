@@ -19,14 +19,20 @@ DiagrammeR('graph LR
            J(Water reservoir)-->E; linkStyle 9 stroke-width:2px,fill:none,stroke:green
            F-->J; linkStyle 10 stroke-width:2px,fill:none,stroke:green
            F-->I; linkStyle 11 stroke-width:2px,fill:none,stroke:green
-           F-->Z(Direct benefits); linkStyle 12 stroke-width:2px,fill:none,stroke:green
+           F-.->Z(Other benefits)
            Z-.->N(Monetary?)
            N-.->B
-           Z-->K(Social); linkStyle 15 stroke-width:2px,fill:none,stroke:green
-           Z-->L(Ecological?); linkStyle 16 stroke-width:2px,fill:none,stroke:green
+           Z-.->K(Social/Economic)
+           Z-.->L(Ecological?)
            F-.->M(Downsides?)
-           K-.->O(Accessibility, Jobs, Health, Food Security)
-           style O fill:lightgreen;
-           style B fill:lightgreen')
+           K-.->O(Accessibility, Jobs, Health, <br> Food Security, Value Chains)
+           P(Climate)-.->A
+           L-.->Q(Climate change, efficient land use)
+           I-.->R(Photosynthesis)
+           R-.->A
+           style O fill:lightgreen, stroke:#333,stroke-width:2px;
+           style B fill:lightgreen, stroke:#333,stroke-width:2px;
+           style Q fill:lightgreen, stroke:#333,stroke-width:2px;
+           style F stroke:#333,stroke-width:2px')
 
 
