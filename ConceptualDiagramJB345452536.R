@@ -1,64 +1,48 @@
 library(DiagrammeR)
-mermaid('graph LR
-        Y(Yield)-->I(Income); linkStyle 0 stroke:green, stroke-width:1px
-        M(Market price)-->I; linkStyle 1 stroke: green, stroke-width:1px
-        I-->F(Final result); linkStyle 2 stroke: green, stroke-width:1px
-        CL(Labor cost)-->F; linkStyle 3 stroke: red, stroke-width:1px
-        CM(Management cost)-->F; linkStyle 4 stroke: red, stroke-width:1px')
+grViz("
+digraph dot {
+graph [layout = dot
+       rankdir = LR
+       fontname = Helvetica]
 
-mermaid('graph LR
-        C(Total Costs)-->N(NPV);
-        R(Revenue)-->N;
-        E(Establishment Costs)-->C;
-        M(Maintenance Costs)-->C;
-        V(Energy yield/savings)-->R;
-        Y(Cropy yield)-->R;
-        W(Water harvesting)-->R;
-        A(Agrivoltaics intervention)-->M;
-        A-->V;
-        A-->Y;
-        A-->W;
-        P(Prices)-->R;
-        Q(Crop)-->P;
-        T(Water)-->P;
-        Z(Energy)-->P
-        
-        O(Climate Change)-->Y
-        O-->V
-        O-->W
-        
-        ')
+# node definitions with substituted label text
+node [fontname = Helvetica]
+a [label = 'NPV', fontname = Helvetica, fontcolor = red]
+b [label = 'Total Costs']
+c [label = 'Establishment Costs']
+d [label = 'Maintenance Costs']
+e [label = 'Revenue']
+f [label = 'Water harvesting']
+g [label = 'Crop yield']
+h [label = 'Energy yield/savings']
+i [label = 'Prices']
+j [label = 'Crop']
+k [label = 'Water']
+l [label = 'Energy']
+#m [label = 'Agrivoltaics']
+n [label = 'Climate change']
 
 
 
-grViz('
-graph {
-  label="Vincent van Gogh Paintings"
+      {b e} -> {a}
+      {f g h} -> e
+      i -> e
+      #m -> {f g h c d}
+      n -> {h f g}
+      {j k l} -> i
+      {c d} -> {b}
 
-  subgraph cluster_self_portraits {
-    label="Self-portraits"
 
-    spwgfh [label="Self-Portrait with Grey Felt Hat"]
-    spaap [label="Self-Portrait as a Painter"]
-  }
-  
-  subgraph cluster_flowers {
-    label="Flowers"
-
-    sf [label="Sunflowers"]
-    ab [label="Almond Blossom"]
-  }
-}
-      ')
-
+}")
 
 grViz("
 digraph dot {
 graph [layout = dot
-       rankdir = LR]
+       rankdir = LR
+       fontname = Helvetica]
 
 # node definitions with substituted label text
-node [color = golden]
+node [fontname = Helvetica]
 a [label = 'NPV', fontname = Helvetica, fontcolor = red]
 b [label = 'Total Costs']
 c [label = 'Establishment Costs']
@@ -74,15 +58,82 @@ l [label = 'Energy']
 m [label = 'Agrivoltaics']
 n [label = 'Climate change']
 
-edge [color = black]
-      {b e} -> {a}
+subgraph cluster_0 {
+      style=filled;
+      color=lightgrey;
+      node [style=filled,color=white];
       {c d} -> {b}
+      label = 'process #1';
+}
+subgraph cluster_1 {
+      style=filled;
+      color=lightgrey;
+      node [style=filled,color=white];
+      {b e} -> {a}
       {f g h} -> e
-      {j k l} -> i
       i -> e
       m -> {f g h c d}
-      n -> {h f g}
-      
+      label = 'process 0';
 }
 
-")
+subgraph cluster_2 {
+      style=filled;
+      color=red;
+      node [style=filled,color=white];
+      {j k l} -> i
+      label = 'process 4';
+}
+
+subgraph cluster_6 {
+      style=filled;
+      color=red;
+      node [style=filled,color=white];
+      n -> {h f g}
+      label = 'process 3';
+}}")
+
+
+grViz("
+digraph dot {
+graph [layout = dot
+       rankdir = LR
+       fontsize = 10
+       fontname = Helvetica
+       compound = true]
+        
+      a [label = 'NPV']
+      e [label = 'Revenue']
+       
+      subgraph cluster_0 {
+      b [label = 'Total Costs']
+      c [label = 'Establishment Costs']
+      d [label = 'Maintenance Costs']
+      {c d} -> {b}}
+      
+      subgraph cluster_1 {
+      f [label = 'Water harvesting']
+      g [label = 'Crop yield']
+      h [label = 'Energy yield/savings']}
+      
+      subgraph cluster_2 {
+      a [label = 'NPV']}
+      
+      subgraph cluster_3 {
+      e [label = 'Revenue']}
+      
+      subgraph cluster_4 {
+      j [label = 'Crop']
+      k [label = 'Water']
+      l [label = 'Energy']
+      i [label = 'Prices']
+      {j k l} -> i}
+    
+    
+      
+      b -> a [ltail=cluster_0 lhead=cluster_2, weight=10];
+      {g f h} -> e [lhead=cluster_3, weight=1];
+      e -> a [ltail=cluster_3 lhead=cluster_2, weight=10];
+      i -> e [lhead=cluster_3, weight=1];
+
+      }")
+
