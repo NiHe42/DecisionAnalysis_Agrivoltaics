@@ -1,0 +1,3 @@
+variable;lower;median;upper;distribution;label;Description
+m_cost;300;NA;600;posnorm;Maintenance (USD/ha);Maintenance cost
+yield;300;NA;600;posnorm;Yield;Income from yield
