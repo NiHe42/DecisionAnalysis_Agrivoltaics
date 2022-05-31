@@ -1,0 +1,14 @@
+variable;lower;median;upper;distribution;label;Description
+ha;2;NA;2;const;Farm area in ha;ha
+yield_per_ha;300;NA;600;posnorm;Yield / ha;Yield/ha
+loss_after_harvest;10;NA;30;posnorm;Loss after harvest / ha;X
+market_price;0.8;NA;1.2;posnorm;Market price as multiplicator;X
+demand;0.5;NA;1.5;posnorm;Demand as multiplicator;X
+workload;20;NA;40;posnorm;Workload / ha;X
+price_work;1.5;NA;2.5;posnorm;Price work as multiplicator;X
+energy_irrigation;10;NA;20;posnorm;Energy irrigation / ha;X
+energy_management;0.85;NA;0.95;posnorm;Energy management as multiplicator;X
+price_energy_kwh;2;NA;4;posnorm;Price energy  kwh/ha;X
+water_consumption;0;NA;0;const;Water consumption L/ ha;X
+price_water_L;1;NA;2;posnorm;Price water / L;X
+pest_control;0.6;NA;0.8;posnorm;Pest control as multiplicator;X
