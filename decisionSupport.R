@@ -5,14 +5,15 @@ input_estimates <- read.csv("data/av_estimates.csv", header = TRUE, sep =";")
 input_estimates
 
 model_function <- function(){
+
+  total_costs = (-water_costs - energy_costs - labour_cost)
   
-  # Estimate the income in a normal season
-  #yield <- Yield * Market_pric
   
   
-  # Estimate the final results from the model
   
-  final_result <- yield - m_cost 
+  
+  
+  final_result <- total_income - total_costs 
   
   # Generate the list of outputs from the Monte Carlo simulation
   return(list(final_result = final_result))
