@@ -6,13 +6,19 @@ input_estimates
 
 model_function <- function(){
 
-  total_costs = (-water_costs - energy_costs - labour_cost)
+  
+  yield = ha * yield_per_ha
+  
+  saleable_products = yield - loss_after_harvest
+  
+  total_income <- saleable_products * market_price * demand
   
   
+  water_costs = (water_consumption * ha) * price_
   
+  total_costs = (-water_costs - energy_costs - labour_cost) * pest_control
   
-  
-  
+
   final_result <- total_income - total_costs 
   
   # Generate the list of outputs from the Monte Carlo simulation
