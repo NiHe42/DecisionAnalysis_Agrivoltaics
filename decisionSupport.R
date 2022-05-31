@@ -1,22 +1,27 @@
 install.packages("decisionSupport")
 library(decisionSupport)
 
-input_estimates <- read.csv("data/av_estimates.csv", header = TRUE, sep =";")
+
+input_estimates <- read.csv("data/av_estimates_dummytest.csv", header = TRUE, sep =";")
 input_estimates
+
 
 model_function <- function(){
 
   
   yield = ha * yield_per_ha
   
-  saleable_products = yield - loss_after_harvest
+  saleable_products <-  yield - (loss_after_harvest * ha)
   
   total_income <- saleable_products * market_price * demand
   
+  labour_cost <- (workload * ha) * price_work
   
-  water_costs = (water_consumption * ha) * price_
+  energy_costs <-  (energy_irrigation * ha) * energy_management * price_energy_kwh
   
-  total_costs = (-water_costs - energy_costs - labour_cost) * pest_control
+  water_costs <-  (water_consumption * ha) * price_water_L
+  
+  total_costs <-  (-water_costs - energy_costs - labour_cost) * pest_control
   
 
   final_result <- total_income - total_costs 
