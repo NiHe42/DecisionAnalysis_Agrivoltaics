@@ -1,7 +1,7 @@
 "variable","lower","median","upper","distribution","label","Description"
 "ha",0.15,NA,0.15,"const","Farm area [ha]","Farm size"
 "yield_per_ha",1.2,NA,1.5,"posnorm","Yield millet [t/ha]","Yield of millet"
-"loss_after_harvest",6,NA,10,"posnorm","Yield loss millet [%]","Yield loss after harvest"
+"loss_after_harvest",0.06,NA,0.1,"posnorm","Yield loss millet [%]","Yield loss after harvest"
 "market_price",380,NA,530,"posnorm","Market price millet [€/t]","Market price of millet"
 "demand",0.5,NA,1.5,"posnorm","Demand as multiplicator","X"
 "workload",20,NA,40,"posnorm","Workload / ha","X"
