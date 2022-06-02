@@ -12,5 +12,5 @@
 "water_consumption",0,NA,0,"const","Water consumption L/ ha","X"
 "price_water_L",1,NA,2,"posnorm","Price water / L","X"
 "pest_control",0.6,NA,0.8,"posnorm","Pest control as multiplicator","X"
-"fertilizer_factor",0.2,NA,1,"posnorm","Additional yield [t/ha]","Add. yield through fertilizer"
-"irrigation_factor",0.2,NA,1,"posnorm","Additional yield [t/ha]","Add. yield through irrigation"
+"fertilizer_factor",0.2,NA,1,"posnorm","Additional yield [%]","Add. yield through fertilizer"
+"irrigation_factor",0.2,NA,1,"posnorm","Additional yield [%]","Add. yield through irrigation"
