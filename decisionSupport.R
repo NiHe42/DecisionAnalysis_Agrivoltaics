@@ -11,7 +11,7 @@ model_function <- function(){
   
   yield = ha * yield_per_ha
   
-  saleable_products <-  yield - (loss_after_harvest * ha)
+  saleable_products <-  yield - (yield * loss_after_harvest)
   
   total_income <- saleable_products * market_price * demand
   
