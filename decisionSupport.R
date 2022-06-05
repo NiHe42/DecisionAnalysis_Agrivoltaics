@@ -2,7 +2,7 @@ install.packages("decisionSupport")
 library(decisionSupport)
 
 
-input_estimates <- read.csv("data/av_estimates_dummytest.csv", header = TRUE, sep =";")
+input_estimates <- read.csv("data/av_estimates_new0602.csv", header = TRUE, sep =";")
 input_estimates
 
 
