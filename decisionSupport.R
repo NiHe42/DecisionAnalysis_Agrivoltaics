@@ -1,9 +1,10 @@
 install.packages("decisionSupport")
 library(decisionSupport)
 
-
-
 input_estimates <- read.csv("data/av_estimates_new0602.csv", header = TRUE, sep =",")
+input_estimates <- read.csv("data/example_input_table_burkina_faso.csv", header = TRUE, sep =",")
+
+input_estimates <- read.csv("data/av_estimates_dummytest2.csv", header = TRUE, sep =";")
 input_estimates
 
 
@@ -46,8 +47,8 @@ model_function <- function(){
                     vv(av_crop_yield_t_ha, vv_var, n_years) *
                     vv(av_crop_profit_EUR_t, vv_var, n_years)
   
-  av_energy_yield <-  vv(av_energy_ha, vv_var, n_years) * # possibility for positive tendency
-                      vv(av_energy_yield_kwh_ha, vv_var, n_years) *
+  av_energy_yield <-  vv(av_energy_kwp, vv_var, n_years) * # possibility for positive tendency
+                      vv(av_energy_yield_kwh_kwp, vv_var, n_years) *
                       vv(av_energy_profit_EUR_kwh, vv_var, n_years)
   
   # processing through both alternatives
@@ -104,6 +105,10 @@ model_function <- function(){
                           vv(av_int_cost_reparation, vv_var, n_years) -
                           vv(av_int_benefit_shade, vv_var, n_years)
     }
+    else
+    {
+      av_int_execution <- av_int_execution_period
+    }
  
     
     av_int_cost <- av_int_execution
@@ -119,38 +124,37 @@ model_function <- function(){
       total_benefits <- av_crop_yield
     }
     
-    if (decision_av_int)
-    {
-      net_benefits <- total_benefits + av_int_cost
-      result_int <- net_benefits
-    }
-    
     if (!decision_av_int)
     {
-      net_benefits <- total_benefits + av_int_cost
+      net_benefits <- total_benefits - av_int_cost
+      result <- net_benefits
+    }
+    
+    if (decision_av_int)
+    {
+      net_benefits <- total_benefits - av_int_cost
       result_int <- net_benefits
     }   
-
   }
   
-  
-  
+  NPV <- discount(result, discount, calculate_NPV = TRUE)
+  NPV_int <- discount(result_int, discount, calculate_NPV = TRUE)
   
   # Generate the list of outputs from the Monte Carlo simulation
-  return(list(final_result = final_result))
+  return(list(NPV = NPV,
+              NPV_int = NPV_int))
 }
 
 # Run the Monte Carlo simulation using the model function
 example_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                       model_function = model_function,
-                                      numberOfModelRuns = 2000,
+                                      numberOfModelRuns = 6000,
                                       functionSyntax = "plainNames")
 
 example_mc_simulation
 
 plot_distributions(mcSimulation_object = example_mc_simulation,
-                   vars = "final_result",
-                   method = "boxplot_density",
-                   old_names = "final_result",
-                   new_names = "Outcome distribution for profits")
+                   vars = c("NPV", "NPV_int"),
+                   method = "smooth_simple_overlay",
+                   base_size = 7)
 
