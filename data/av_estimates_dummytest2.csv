@@ -1,20 +1,20 @@
 variable;lower;median;upper;distribution;label;Description
-av_int_no_involvement_by_population;0.10;NA;0.30;posnorm;Probability of population not involves;Estimate from class example
-av_int_event_photovoltaic_panels;0.10;NA;0.15;posnorm;av_int_event_photovoltaic_panels;X [not used yet]
+av_int_no_involvement_by_population;0.1;NA;0.3;posnorm;Probability of population not involves;Estimate from class example
+av_int_event_photovoltaic_panels;0.1;NA;0.15;posnorm;av_int_event_photovoltaic_panels;X [not used yet]
 av_crop_ha;0.15;NA;0.15;const;Farm area [ha];Farm size
-av_crop_yield_t_ha;1.20;NA;1.50;posnorm;Yield millet  [t/ha];Yield of millet
-av_crop_profit_EUR_t;380.00;NA;530.00;posnorm;Market price millet [€/t];Market price of millet
-av_energy_kwp;5.00;NA;10.00;posnorm;av_energy_ha;av_energy_ha
-av_energy_yield_kwh_kwp;1000.00;NA;1500.00;posnorm;av_energy_yield_kwh_ha;av_energy_yield_kwh_ha
+av_crop_yield_t_ha;1.2;NA;1.5;posnorm;Yield millet  [t/ha];Yield of millet
+av_crop_profit_EUR_t;380;NA;530;posnorm;Market price millet [€/t];Market price of millet
+av_energy_kwp;5;NA;10;posnorm;av_energy_ha;av_energy_ha
+av_energy_yield_kwh_kwp;1000;NA;1500;posnorm;av_energy_yield_kwh_ha;av_energy_yield_kwh_ha
 av_energy_profit_EUR_kwh;0.17;NA;0.23;posnorm;Energy price [€/kWh];Grid energy price
-av_int_cost_search_panels;0.10;NA;0.90;posnorm;av_int_cost_search_panels;av_int_cost_search_panels
-av_int_cost_search_location;0.10;NA;0.90;posnorm;av_int_cost_search_location;av_int_cost_search_location
-av_int_cost_photovoltaic_panels;5000.00;NA;15000.00;posnorm;av_int_cost_photovoltaic_panels;av_int_cost_photovoltaic_panels
-av_int_cost_ground_preparation;50.00;NA;300.00;posnorm;av_int_cost_ground_preparation;av_int_cost_ground_preparation
-av_int_cost_installation;100.00;NA;2000.00;posnorm;av_int_cost_installation;av_int_cost_installation
-av_int_cost_training;30.00;NA;100.00;posnorm;av_int_cost_training;av_int_cost_training
-av_int_cost_reparation;0.10;NA;0.90;posnorm;av_int_cost_reparation;av_int_cost_reparation
-av_int_benefit_shade;0.10;NA;0.90;posnorm;av_int_benefit_shade;av_int_benefit_shade
-discount;1.00;NA;5.00;posnorm;discount;Estimate from class example
-vv_var;5.00;NA;20.00;posnorm;vv_var;Estimate from class example
-n_years;20.00;NA;35.00;posnorm;n_years;n_years
+av_int_cost_search_panels;0.1;NA;0.9;posnorm;av_int_cost_search_panels;av_int_cost_search_panels
+av_int_cost_search_location;0.1;NA;0.9;posnorm;av_int_cost_search_location;av_int_cost_search_location
+av_int_cost_photovoltaic_panels;5000;NA;15000;posnorm;av_int_cost_photovoltaic_panels;av_int_cost_photovoltaic_panels
+av_int_cost_ground_preparation;50;NA;300;posnorm;av_int_cost_ground_preparation;av_int_cost_ground_preparation
+av_int_cost_installation;100;NA;2000;posnorm;av_int_cost_installation;av_int_cost_installation
+av_int_cost_training;30;NA;100;posnorm;av_int_cost_training;av_int_cost_training
+av_int_cost_reparation;0.1;NA;0.9;posnorm;av_int_cost_reparation;av_int_cost_reparation
+av_int_benefit_shade;0.1;NA;0.9;posnorm;av_int_benefit_shade;av_int_benefit_shade
+discount;1;NA;5;posnorm;discount;Estimate from class example
+vv_var;5;NA;20;posnorm;vv_var;Estimate from class example
+n_years;20;NA;35;posnorm;n_years;n_years
