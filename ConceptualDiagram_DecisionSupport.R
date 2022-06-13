@@ -4,119 +4,34 @@ library(DiagrammeR)
 
 
 DiagrammeR('graph LR
-           A(Yield) ')
-
-
-
-model_function <- function(){
-  
-  av_int_execution_period <- rep(0,n_years)
-  
-  # ex-ante risks
-  av_int_event_no_involvement_by_population <-
-    chance_event(av_int_no_involvement_by_population, 1, 0, n = 1)
-  av_int_event_defect_photovoltaic_panels <-
-    chance_event(av_int_event_photovoltaic_panels, 1, 0, n = 1)
-  
-  # crop benefits VV
-  av_crop_yield <-  vv(av_crop_ha, vv_var, n_years) *
-    vv(av_crop_yield_t_ha, vv_var, n_years) *
-    vv(av_crop_profit_EUR_t, vv_var, n_years)
-  
-  av_energy_yield <-  vv(av_energy_kwp, vv_var, n_years) * # possibility for positive tendency
-    vv(av_energy_yield_kwh_kwp, vv_var, n_years) *
-    vv(av_energy_profit_EUR_kwh, vv_var, n_years)
-  
-  # processing through both alternatives
-  for (decision_av_int in c(FALSE, TRUE))
-  {
-    if (decision_av_int)
-    {
-      decision_av_int_planning <- TRUE
-      decision_av_int_setup <- TRUE
-      decision_av_int_execution <- TRUE
-    }
-    else
-    {
-      
-      decision_av_int_planning <- FALSE
-      decision_av_int_setup <- FALSE
-      decision_av_int_execution <- FALSE
-    }
-    
-    if (av_int_event_no_involvement_by_population)
-    {
-      decision_av_int_setup <- FALSE
-      decision_av_int_execution <- FALSE
-    }
-    
-    # cost calculation
-    #calculation planning costs
-    if (decision_av_int_planning)
-    {
-      av_int_planning <- av_int_cost_search_panels + av_int_cost_search_location
-    }
-    else
-    {
-      av_int_planning <- 0
-    }
-    
-    #calculation setup costs   
-    if (decision_av_int_setup)
-    {
-      av_int_setup <- av_int_cost_photovoltaic_panels +
-        av_int_cost_ground_preparation +
-        av_int_cost_installation +
-        av_int_cost_training
-    }
-    else
-    {
-      av_int_setup <- 0
-    }
-    
-    #calculation execution/maintenance costs   
-    if (decision_av_int_execution)
-    {
-      av_int_execution <- av_int_execution_period + 
-        vv(av_int_cost_reparation, vv_var, n_years) -
-        vv(av_int_benefit_shade, vv_var, n_years)
-    }
-    else
-    {
-      av_int_execution <- av_int_execution_period
-    }
-    
-    
-    av_int_cost <- av_int_execution
-    av_int_cost[1] <- av_int_cost[1] + av_int_setup + av_int_planning
-    
-    if(decision_av_int)
-    {
-      total_benefits <- av_crop_yield + av_energy_yield
-    }
-    
-    else
-    {
-      total_benefits <- av_crop_yield
-    }
-    
-    if (!decision_av_int)
-    {
-      net_benefits <- total_benefits - av_int_cost
-      result <- net_benefits
-    }
-    
-    if (decision_av_int)
-    {
-      net_benefits <- total_benefits - av_int_cost
-      result_int <- net_benefits
-    }   
-  }
-  
-  NPV <- discount(result, discount, calculate_NPV = TRUE)
-  NPV_int <- discount(result_int, discount, calculate_NPV = TRUE)
-  
-  # Generate the list of outputs from the Monte Carlo simulation
-  return(list(NPV = NPV,
-              NPV_int = NPV_int))
-}
+           B(net_benefits)-->A(result)
+           C(total_benefits)-->B
+           D(av_int_cost)-->B
+           E(av_crop_yield)-->C
+           F(av_int_execution)-->D
+           G(av_int_execution_period)-->F
+           H(av_crop_ha vv)-->E
+           I(av_crop_yield_t_ha vv)-->E
+           J(av_crop_profit_EUR_t vv)-->E
+           PVA(av_energy_yield)-->C
+           PVC(av_int_cost_reparation vv)-->F
+           PVD(av_int_benefit_shade vv)-->F
+           PVF(av_int_setup)-.->D
+           PVE(av_int_cost_photovoltaic_panels)-->PVF
+           PVG(av_int_cost_ground_preparation)-->PVF
+           PVH(av_int_cost_installation)-->PVF
+           PVI(av_int_cost_training)-->PVF
+           PVJ(av_int_planning)-.->D
+           PVK(av_int_cost_search_panels)-->PVJ
+           PVL(av_int_cost_search_location)-->PVJ
+           style PVA fill:orange, stroke:#333,stroke-width:2px;
+           style PVC fill:orange, stroke:#333,stroke-width:2px;
+           style PVD fill:orange, stroke:#333,stroke-width:2px;
+           style PVE fill:orange, stroke:#333,stroke-width:2px;
+           style PVF fill:orange, stroke:#333,stroke-width:2px;
+           style PVG fill:orange, stroke:#333,stroke-width:2px;
+           style PVH fill:orange, stroke:#333,stroke-width:2px;
+           style PVI fill:orange, stroke:#333,stroke-width:2px;
+           style PVJ fill:orange, stroke:#333,stroke-width:2px;
+           style PVK fill:orange, stroke:#333,stroke-width:2px;
+           style PVL fill:orange, stroke:#333,stroke-width:2px;')
