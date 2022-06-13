@@ -1,4 +1,65 @@
 library(DiagrammeR)
+
+
+grViz("
+digraph dot {
+graph [layout = dot
+       rankdir = LR
+       fontname = Helvetica]
+
+node [fontname = Helvetica]
+a [label = 'NPV', fontsize = 30]
+b [label = 'Discount', fontsize = 20, style=filled, color=yellow]
+c [label = 'Total benefits']
+d [label = 'Total costs']
+e [label = 'Crop yield']
+f [label = 'Energy yield']
+g [label = 'Setup costs']
+h [label = 'Planning costs']
+i [label = 'Maintenance Costs']
+j [label = 'Costs for photovoltaic panels']
+k [label = 'Costs for ground preparation']
+l [label = 'Costs for installation']
+m [label = 'Costs for training staff']
+n [label = 'Reparation Costs']
+o [label = 'Costs for searching for photovoltaic panels']
+p [label = 'Costs for searching for location']
+q [label = 'Energy production [kWh/ha]']
+r [label = 'Area for Energy [ha]']
+s [label = 'Energy Price [€/kWh]']
+t [label = 'Crop production[t/ha]']
+u [label = 'Area for Crops [ha]']
+v [label = 'Crop market price[€/t]']
+#w [label = '']
+
+b -> a
+[minlen=1]
+c -> a
+[minlen=3]
+d -> a
+[minlen=3]
+
+subgraph cluster_1 {
+style=filled
+color=lightcoral
+{g,h,i} -> d
+{j,k,l,m} -> g
+{o,p} -> h
+n -> i
+label = 'Costs'
+fontsize = 30
+}
+subgraph cluster_0 {
+style=filled
+color=yellowgreen
+{e,f} -> c
+{t,u,v} -> e
+{q,r,s} -> f
+label = 'Benefits'
+fontsize = 30
+}
+}")
+
 grViz("
 digraph dot {
 graph [layout = dot
