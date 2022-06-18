@@ -8,6 +8,96 @@ graph [layout = dot
        fontname = Helvetica]
 
 node [fontname = Helvetica]
+
+a [label = 'NPV', fontsize = 30, shape = doublecircle]
+b [label = 'Discount', fontsize = 20, color=gray1, fontcolor = gray1, shape = diamond]
+c [label = 'Total benefits', shape = box, color=black, fontcolor = black]
+d [label = 'Total costs', shape = box, color=grey0, fontcolor = grey0]
+e [label = 'Crop yield', color=black, fontcolor = black]
+f [label = 'Energy yield', color=black, fontcolor = black]
+g [label = 'Setup costs', color=grey0, fontcolor = grey0]
+h [label = 'Planning costs', color=grey0, fontcolor = grey0]
+i [label = 'Maintenance Costs', color=grey0, fontcolor = grey0]
+j [label = 'Costs for photovoltaic panels', color=grey0, fontcolor = grey0]
+k [label = 'Costs for ground preparation', color=grey0, fontcolor = grey0]
+l [label = 'Costs for installation', color=grey0, fontcolor = grey0]
+m [label = 'Costs for training staff', color=grey0, fontcolor = grey0]
+n [label = 'Reparation Costs', color=grey0, fontcolor = grey0]
+o [label = 'Costs for searching for photovoltaic panels', color=grey0, fontcolor = grey0]
+p [label = 'Costs for searching for location', color=grey0, fontcolor = grey0]
+q [label = 'Energy production [kWh/ha]', color=black, fontcolor = black]
+r [label = 'Area for Energy [ha]', color=black, fontcolor = black]
+s [label = 'Energy Price [€/kWh]', color=black, fontcolor = black]
+t [label = 'Crop production[t/ha]', color=black, fontcolor = black]
+u [label = 'Area for Crops [ha]', color=black, fontcolor = black]
+v [label = 'Crop market price[€/t]', color=black, fontcolor = black]
+w [label = 'Risk of wrong Installation', color=gray1, fontcolor = gray1]
+x [label = 'Risk of wrong/no Maintenance', color=gray1, fontcolor = gray1]
+#y [label = 'Risk of bad training', color=gray1, fontcolor = gray1]
+z [label = 'Risk of bad ground preparation/bad location', color=gray1, fontcolor = gray1]
+a1 [label = 'Risk of natural hazard', color=gray1, fontcolor = gray1]
+b1 [label = 'Risk of political interference', color=gray1, fontcolor = gray1]
+c1 [label = 'Risk of drought', color=gray1, fontcolor = gray1]
+d1 [label = 'Risk of no involvement by communities', color=gray1, fontcolor = gray1]
+e1 [label = 'Risk of no involvement by donors', color=gray1, fontcolor = gray1]
+f1 [label = 'Risk of bad design', color=gray1, fontcolor = gray1]
+g1 [label = 'Climate change effects',fillcolor='red:green']
+h1 [label = 'Risk of low quality photovoltaic panels', color=gray1, fontcolor = gray1]
+#i1
+#j1
+#k1
+
+b -> a
+[minlen=1]
+c -> a
+[minlen=3]
+d -> a
+[minlen=3]
+
+subgraph combi {
+label = 'combi'
+fillcolor = black
+subgraph cluster_1 {
+{g,h,i} -> d
+{j,k,l,m} -> g
+{o,p} -> h
+n -> i
+w -> l
+x -> i
+z -> {k,p}
+h1 -> {j,q}
+label = 'Costs'
+fontsize = 30
+}
+
+subgraph cluster_0 {
+{e,f} -> c
+{t,u,v} -> e
+{q,r,s} -> f
+c1 -> t
+g1 -> {t,q}
+label = 'Benefits'
+fontsize = 30
+}
+}
+
+subgraph intervention_AV{
+INT [label = 'Intervention']
+}
+
+INT -> s [ltail=intervention_AV, lhead=cluster_0]
+
+
+}")
+
+
+grViz("
+digraph dot {
+graph [layout = dot
+       rankdir = LR
+       fontname = Helvetica]
+
+node [fontname = Helvetica]
 a [label = 'NPV', fontsize = 30]
 b [label = 'Discount', fontsize = 20, style=filled, color=yellow]
 c [label = 'Total benefits']
@@ -30,7 +120,6 @@ s [label = 'Energy Price [€/kWh]']
 t [label = 'Crop production[t/ha]']
 u [label = 'Area for Crops [ha]']
 v [label = 'Crop market price[€/t]']
-#w [label = '']
 
 b -> a
 [minlen=1]
@@ -198,12 +287,33 @@ graph [layout = dot
     
     
       
-      b -> a [ltail=cluster_0 lhead=cluster_2, weight=10];
-      {g f h} -> e [lhead=cluster_3, weight=1];
-      e -> a [ltail=cluster_3 lhead=cluster_2, weight=10];
-      i -> e [lhead=cluster_3, weight=1];
+      #b -> a [ltail=cluster_0 lhead=cluster_2, weight=10];
+
+      #e -> a [ltail=cluster_3 lhead=cluster_2, weight=10];
+      #i -> e [lhead=cluster_3, weight=1];
 
       }")
+
+
+grViz("
+      digraph dot{
+            subgraph cluster_3 {
+            e [label = 'Revenue']}
+            
+            subgraph cluster_1 {
+            g [label = 'Crop yield']}
+            
+            g -> e [lhead=cluster_3, weight=1];
+      }
+      
+      ")
+
+
+
+
+
+
+
 
 Diagramme kombinieren
 Stakeholder Liste + Graph
