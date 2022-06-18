@@ -7,6 +7,9 @@ input_estimates <- read.csv("data/example_input_table_burkina_faso.csv", header 
 input_estimates <- read.csv("data/av_estimates_dummytest2.csv", header = TRUE, sep =";")
 input_estimates
 
+as.estimate(input_estimates)
+
+
 
 model_functionv1 <- function(){
 
