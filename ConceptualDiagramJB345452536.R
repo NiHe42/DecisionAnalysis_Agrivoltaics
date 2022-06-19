@@ -5,10 +5,16 @@ grViz("
 digraph dot {
 graph [layout = dot
        rankdir = LR
-       fontname = Helvetica]
+       fontname = Helvetica
+       compound = true
+       splines = polyline   #ortho (auch interessant)
+       nodesep=0.2
+       #ordering = in
+       ]
 
-node [fontname = Helvetica]
-
+node [fontname = Helvetica
+      shape = box]
+INT [label = 'Intervention']
 a [label = 'NPV', fontsize = 30, shape = doublecircle]
 b [label = 'Discount', fontsize = 20, color=gray1, fontcolor = gray1, shape = diamond]
 c [label = 'Total benefits', shape = box, color=black, fontcolor = black]
@@ -39,13 +45,16 @@ a1 [label = 'Risk of natural hazard', color=gray1, fontcolor = gray1]
 b1 [label = 'Risk of political interference', color=gray1, fontcolor = gray1]
 c1 [label = 'Risk of drought', color=gray1, fontcolor = gray1]
 d1 [label = 'Risk of no involvement by communities', color=gray1, fontcolor = gray1]
-e1 [label = 'Risk of no involvement by donors', color=gray1, fontcolor = gray1]
+e1 [label = 'Risk of no involvement by institution', color=gray1, fontcolor = gray1]
 f1 [label = 'Risk of bad design', color=gray1, fontcolor = gray1]
-g1 [label = 'Climate change effects',fillcolor='red:green']
+g1 [label = 'Climate change effects', fillcolor=red]
 h1 [label = 'Risk of low quality photovoltaic panels', color=gray1, fontcolor = gray1]
-#i1
-#j1
-#k1
+i1 [label = 'Ex-ante risks', shape = box]
+j1 [label = 'Ex-post risks', shape = box]
+k1 [label = 'Irrigation']
+l1 [label = 'Cost for pump']
+m1 [label = 'Other energy consume']
+n1
 
 b -> a
 [minlen=1]
@@ -54,10 +63,18 @@ c -> a
 d -> a
 [minlen=3]
 
-subgraph combi {
-label = 'combi'
-fillcolor = black
-subgraph cluster_1 {
+
+subgraph crop {
+rank = same
+e
+t
+u
+}
+
+subgraph costs {
+label = 'Costs'
+style = invis
+fontsize = 30
 {g,h,i} -> d
 {j,k,l,m} -> g
 {o,p} -> h
@@ -65,27 +82,43 @@ n -> i
 w -> l
 x -> i
 z -> {k,p}
-h1 -> {j,q}
-label = 'Costs'
-fontsize = 30
+h1 -> {j}
+
 }
 
-subgraph cluster_0 {
+subgraph benefits {
+label = 'Benefits'
+style = invis
+fontsize = 30
 {e,f} -> c
 {t,u,v} -> e
 {q,r,s} -> f
+f -> {k1, m1}
+k1 -> e
+l1 -> k1
 c1 -> t
-g1 -> {t,q}
-label = 'Benefits'
-fontsize = 30
+g1 -> {t,q}}
+
+
+subgraph intervention {
+
+style = invis
+  subgraph exante {
+
+  {d1,e1} -> i1
+  }
+  subgraph expost {
+  rank = same
+  {b1,a1,f1} ->j1 [minlen=6]
+  }
+  
+i1 -> INT
+INT ->j1
+j1 ->  c
 }
 }
 
-subgraph intervention_AV{
-INT [label = 'Intervention']
-}
 
-INT -> s [ltail=intervention_AV, lhead=cluster_0]
 
 
 }")
@@ -261,7 +294,7 @@ graph [layout = dot
       a [label = 'NPV']
       e [label = 'Revenue']
        
-      subgraph cluster_0 {
+      subgraph dFdf {
       b [label = 'Total Costs']
       c [label = 'Establishment Costs']
       d [label = 'Maintenance Costs']
@@ -272,10 +305,10 @@ graph [layout = dot
       g [label = 'Crop yield']
       h [label = 'Energy yield/savings']}
       
-      subgraph cluster_2 {
+      subgraph cluster_3 {
       a [label = 'NPV']}
       
-      subgraph cluster_3 {
+      subgraph intervention_AV {
       e [label = 'Revenue']}
       
       subgraph cluster_4 {
@@ -287,10 +320,10 @@ graph [layout = dot
     
     
       
-      #b -> a [ltail=cluster_0 lhead=cluster_2, weight=10];
+      b -> a [ltail=cluster_0 lhead=cluster_2, weight=10];
 
-      #e -> a [ltail=cluster_3 lhead=cluster_2, weight=10];
-      #i -> e [lhead=cluster_3, weight=1];
+      e -> a [ltail=intervention_AV lhead=cluster_3, weight=10];
+      i -> e [lhead=cluster_3, weight=1];
 
       }")
 
@@ -308,9 +341,22 @@ grViz("
       
       ")
 
+grViz('
+digraph top {
+  node [shape=record ,penwidth = 2,fontsize=25];
+  graph [labeljust=l]
+  ratio="fill";
+  
 
+    subgraph cluster_2 {
+      label = "Box 2";
+      fontsize=38
+      
 
-
+a
+  }}
+}
+')
 
 
 
