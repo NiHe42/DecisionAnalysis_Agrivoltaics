@@ -10,12 +10,13 @@ graph [layout = dot
        splines = polyline   #ortho (auch interessant)
        nodesep=0.2
        #ordering = in
+       #pad='0.812,0.055'
        ]
 
 node [fontname = Helvetica
       shape = box]
 INT [label = 'Intervention']
-a [label = 'NPV', fontsize = 30, shape = doublecircle]
+a [label = 'NPV', fontsize = 30, shape = doublecircle,  pos='0,0!']
 b [label = 'Discount', fontsize = 20, color=gray1, fontcolor = gray1, shape = diamond]
 c [label = 'Total benefits', shape = box, color=black, fontcolor = black]
 d [label = 'Total costs', shape = box, color=grey0, fontcolor = grey0]
@@ -37,24 +38,24 @@ s [label = 'Energy Price [€/kWh]', color=black, fontcolor = black]
 t [label = 'Crop production[t/ha]', color=black, fontcolor = black]
 u [label = 'Area for Crops [ha]', color=black, fontcolor = black]
 v [label = 'Crop market price[€/t]', color=black, fontcolor = black]
-w [label = 'Risk of wrong Installation', color=gray1, fontcolor = gray1]
-x [label = 'Risk of wrong/no Maintenance', color=gray1, fontcolor = gray1]
-#y [label = 'Risk of bad training', color=gray1, fontcolor = gray1]
-z [label = 'Risk of bad ground preparation/bad location', color=gray1, fontcolor = gray1]
-a1 [label = 'Risk of natural hazard', color=gray1, fontcolor = gray1]
-b1 [label = 'Risk of political interference', color=gray1, fontcolor = gray1]
-c1 [label = 'Risk of drought', color=gray1, fontcolor = gray1]
-d1 [label = 'Risk of no involvement by communities', color=gray1, fontcolor = gray1]
-e1 [label = 'Risk of no involvement by institution', color=gray1, fontcolor = gray1]
-f1 [label = 'Risk of bad design', color=gray1, fontcolor = gray1]
-g1 [label = 'Climate change effects', fillcolor=red]
-h1 [label = 'Risk of low quality photovoltaic panels', color=gray1, fontcolor = gray1]
-i1 [label = 'Ex-ante risks', shape = box]
-j1 [label = 'Ex-post risks', shape = box]
-k1 [label = 'Irrigation']
-l1 [label = 'Cost for pump']
-m1 [label = 'Other energy consume']
-n1
+w [label = 'Risk of wrong Installation', color=firebrick, fontcolor = firebrick]
+x [label = 'Risk of wrong/no Maintenance', color=firebrick, fontcolor = firebrick]
+#y [label = 'Risk of bad training', color=firebrick, fontcolor = firebrick]
+z [label = 'Risk of bad ground preparation/bad location', color=firebrick, fontcolor = firebrick]
+a1 [label = 'Risk of natural hazard', color=firebrick, fontcolor = firebrick]
+b1 [label = 'Risk of political interference', color=firebrick, fontcolor = firebrick]
+c1 [label = 'Risk of drought', color=firebrick, fontcolor = firebrick]
+d1 [label = 'Risk of no involvement by communities', color=firebrick, fontcolor = firebrick]
+e1 [label = 'Risk of no involvement by institution', color=firebrick, fontcolor = firebrick]
+f1 [label = 'Risk of bad design', color=firebrick, fontcolor = firebrick]
+g1 [label = 'Climate change effects', color=firebrick, fontcolor = firebrick]
+h1 [label = 'Risk of low quality photovoltaic panels', color=firebrick, fontcolor = firebrick]
+i1 [label = 'Ex-ante risks', shape = box, color=firebrick, fontcolor = firebrick]
+j1 [label = 'Ex-post risks', shape = box, color=firebrick, fontcolor = firebrick]
+k1 [label = 'Irrigation', color=firebrick, fontcolor = firebrick]
+l1 [label = 'Cost for pump', color=firebrick, fontcolor = firebrick]
+m1 [label = 'Other energy consume',color=firebrick, fontcolor = firebrick]
+
 
 b -> a
 [minlen=1]
@@ -63,13 +64,13 @@ c -> a
 d -> a
 [minlen=3]
 
-
 subgraph crop {
 rank = same
 e
 t
 u
 }
+
 
 subgraph costs {
 label = 'Costs'
