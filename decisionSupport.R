@@ -42,10 +42,24 @@ model_function <- function(){
   # ex-ante risks
   av_int_event_no_involvement_by_population <-
                 chance_event(av_int_no_involvement_by_population, 1, 0, n = 1)
+  av_int_event_no_involvement_by_institution <-
+                chance_event(av_int_no_involvement_by_institution, 1, 0, n = 1)
+  
+  # ex-post risks
   av_int_event_defect_photovoltaic_panels <-
                 chance_event(av_int_event_photovoltaic_panels, 1, 0, n = 1)
   
+  av_event_drought <-
+                chance_event(av_drought, 1,0, n = n_years)
+  
+  
   # crop benefits VV
+  
+  if (av_event_drought){
+    av_crop_yield_t_ha
+  }
+  
+  
   av_crop_yield <-  vv(av_crop_ha, vv_var, n_years) *
                     vv(av_crop_yield_t_ha, vv_var, n_years) *
                     vv(av_crop_profit_EUR_t, vv_var, n_years)
@@ -76,7 +90,14 @@ model_function <- function(){
       decision_av_int_setup <- FALSE
       decision_av_int_execution <- FALSE
     }
-      
+    
+    if (av_int_event_no_involvement_by_institution)
+    {
+      decision_av_int_setup <- FALSE
+      decision_av_int_execution <- FALSE
+    }
+    
+    
   # cost calculation
     #calculation planning costs
     if (decision_av_int_planning)
@@ -148,6 +169,7 @@ model_function <- function(){
               NPV_int = NPV_int))
 }
 
+input_estimates <- read.csv("data/av_estimates_dummytest2.csv", header = TRUE, sep =";")
 # Run the Monte Carlo simulation using the model function
 example_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                       model_function = model_function,
