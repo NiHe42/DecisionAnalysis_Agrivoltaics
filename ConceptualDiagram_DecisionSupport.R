@@ -24,6 +24,17 @@ DiagrammeR('graph LR
            PVJ(av_int_planning)-.->D
            PVK(av_int_cost_search_panels)-->PVJ
            PVL(av_int_cost_search_location)-->PVJ
+           newA(RISK wrong installation)-->PVH
+           newB(RISK of low quality AV panels)-->PVE
+           newC(RISK of wrong/no maintenance)-->F
+           newD(RISK of bad preparation/location)-->PVG
+           newD-->PVL
+           newE(Climate change)-->PVA
+           newE-->I
+           newF(Drought)-->I
+           newG(Irrigation)-->E
+           PVA-->newG
+           newH(Cost for pump)-->newG
            style PVA fill:orange, stroke:#333,stroke-width:2px;
            style PVC fill:orange, stroke:#333,stroke-width:2px;
            style PVD fill:orange, stroke:#333,stroke-width:2px;
