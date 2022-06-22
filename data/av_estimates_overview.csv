@@ -7,7 +7,7 @@
 "6","av_crop_ha",0.15,NA,0.15,"const","Farm area [ha]","Farm size"
 "7","av_crop_yield_t_ha",0.5,NA,1.5,"posnorm","Yield millet  [t/ha]","Yield of millet"
 "8","av_crop_profit_EUR_t",380,NA,530,"posnorm","Market price millet [€/t]","Market price of millet"
-"9","av_ha",0.0025,NA,0.0025,"posnorm","av_energy_ha","Size of AV facility [ha]"
+"9","av_ha",0.0025,NA,0.003,"posnorm","av_energy_ha","Size of AV facility [ha]"
 "10","av_energy_yield_kwp_ha",160,NA,240,"posnorm","Energy yield [kWp/ha]","Energy yield of AV per ha"
 "11","av_energy_profit_EUR_kwh",170,NA,230,"posnorm","Energy price [€/kWp]","Grid energy price"
 "12","av_int_cost_search_panels",50,NA,250,"posnorm","av_int_cost_search_panels","av_int_cost_search_panels"
