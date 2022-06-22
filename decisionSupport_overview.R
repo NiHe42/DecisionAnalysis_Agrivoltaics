@@ -1,39 +1,11 @@
-install.packages("decisionSupport")
 library(decisionSupport)
 
-input_estimates <- read.csv("data/av_estimates_new0602.csv", header = TRUE, sep =",")
-input_estimates <- read.csv("data/example_input_table_burkina_faso.csv", header = TRUE, sep =",")
-
-input_estimates <- read.csv("data/av_estimates_dummytest2.csv", header = TRUE, sep =";")
-input_estimates
+input_estimates <- read.csv("data/av_estimates_overview.csv", header = TRUE)
 
 as.estimate(input_estimates)
 
 
 
-model_functionv1 <- function(){
-
-  
-  yield = ha * yield_per_ha
-  
-  saleable_products <-  yield - (yield * loss_after_harvest)
-  
-  total_income <- saleable_products * market_price * demand
-  
-  labour_cost <- (workload * ha) * price_work
-  
-  energy_costs <-  (energy_irrigation * ha) * energy_management * price_energy_kwh
-  
-  water_costs <-  (water_consumption * ha) * price_water_L
-  
-  total_costs <-  (-water_costs - energy_costs - labour_cost) * pest_control
-  
-
-  final_result <- total_income - total_costs 
-  
-  # Generate the list of outputs from the Monte Carlo simulation
-  return(list(final_result = final_result))
-}
 
 model_function <- function(){
   
@@ -60,13 +32,14 @@ model_function <- function(){
   }
   
   
-  av_crop_yield <-  vv(av_crop_ha, vv_var, n_years) *
+  av_crop_yield <-  vv(av_crop_ha, c(0, 0), n_years) *
                     vv(av_crop_yield_t_ha, vv_var, n_years) *
-                    vv(av_crop_profit_EUR_t, vv_var, n_years)
+                    vv(av_crop_profit_EUR_t, vv_var, n_years) *
+                    yield_loss
   
-  av_energy_yield <-  vv(av_energy_kwp, vv_var, n_years) * # possibility for positive tendency
-                      vv(av_energy_yield_kwh_kwp, vv_var, n_years) *
-                      vv(av_energy_profit_EUR_kwh, vv_var, n_years)
+  av_energy_yield <-  vv(av_ha, vv_var, n_years) *
+                      vv(av_energy_yield_kwp_ha, vv_var, n_years) *
+                      vv(av_energy_profit_EUR_kwp, vv_var, n_years)
   
   # processing through both alternatives
   for (decision_av_int in c(FALSE, TRUE))
@@ -112,9 +85,8 @@ model_function <- function(){
     #calculation setup costs   
     if (decision_av_int_setup)
     {
-      av_int_setup <- av_int_cost_photovoltaic_panels +
-                      av_int_cost_ground_preparation +
-                      av_int_cost_installation +
+      av_int_setup <- (av_int_cost_photovoltaic_panels * av_ha * av_energy_yield_kwp_ha) +
+                      av_int_cost_installation + # maybe in av_int_cost_photovoltaic_panels
                       av_int_cost_training
     }
     else
@@ -169,14 +141,13 @@ model_function <- function(){
               NPV_int = NPV_int))
 }
 
-input_estimates <- read.csv("data/av_estimates_dummytest2.csv", header = TRUE, sep =";")
+
 # Run the Monte Carlo simulation using the model function
 example_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                       model_function = model_function,
                                       numberOfModelRuns = 6000,
                                       functionSyntax = "plainNames")
 
-example_mc_simulation
 
 plot_distributions(mcSimulation_object = example_mc_simulation,
                    vars = c("NPV", "NPV_int"),
