@@ -4,7 +4,7 @@
 "3","av_int_event_photovoltaic_panels",0.1,NA,0.15,"posnorm","av_int_event_photovoltaic_panels","X [not used yet]"
 "4","av_drought",0.1,NA,0.25,"posnorm","av_drought","Chance for drought"
 "5","av_effects_drought",0.7,NA,0.9,"posnorm","av_effects_drought","Effects of drought"
-"6","av_crop_ha",0.15,NA,0.15,"const","Farm area [ha]","Farm size"
+"6","av_crop_ha",0.8,NA,0.8,"const","Farm area [ha]","Farm size"
 "7","av_crop_yield_t_ha",0.5,NA,1.5,"posnorm","Yield millet  [t/ha]","Yield of millet"
 "8","av_crop_profit_EUR_t",380,NA,530,"posnorm","Market price millet [€/t]","Market price of millet"
 "9","av_ha",0.005,NA,0.005,"const","av_energy_ha","Size of AV facility [ha]"
