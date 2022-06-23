@@ -24,24 +24,9 @@ model_function <- function(){
   av_event_drought <-
                 chance_event(av_drought, 1,0, n = n_years)
   
+
   
-  # crop benefits VV
-  
-  if (av_event_drought){
-    av_crop_yield_t_ha
-  }
-  
-  
-  av_crop_yield <-  vv(av_crop_ha, c(0, 0), n_years) *
-                    vv(av_crop_yield_t_ha, vv_var, n_years) *
-                    vv(av_crop_profit_EUR_t, vv_var, n_years) *
-                    yield_loss
-  
-  av_energy_yield <-  vv(av_ha, vv_var, n_years) *
-                      vv(av_energy_yield_kwp_ha, vv_var, n_years) *
-                      vv(av_energy_profit_EUR_kwp, vv_var, n_years)
-  
-  # processing through both alternatives
+  # processing through standard farm and farm with av intervention
   for (decision_av_int in c(FALSE, TRUE))
   {
     if (decision_av_int)
@@ -71,8 +56,11 @@ model_function <- function(){
     }
     
     
-  # cost calculation
-    #calculation planning costs
+    
+    
+### cost calculation
+    
+    ## calculation planning costs
     if (decision_av_int_planning)
     {
       av_int_planning <- av_int_cost_search_panels + av_int_cost_search_location
@@ -82,11 +70,17 @@ model_function <- function(){
       av_int_planning <- 0
     }
     
-    #calculation setup costs   
+    ## calculation of setup costs  
     if (decision_av_int_setup)
     {
-      av_int_setup <- (av_int_cost_photovoltaic_panels * av_ha * av_energy_yield_kwp_ha) +
-                      av_int_cost_installation + # maybe in av_int_cost_photovoltaic_panels
+      # panel costs by €/kwp * ha * kwp/ha
+      var_panel_cost = (av_int_cost_photovoltaic_panels * av_ha * av_energy_yield_kwp_ha)
+      # chance event if installation risk occurs and variation of costs with vv function
+      var_installation_risk_cost = chance_event(chance = av_int_risk_installation, value_if = vv(av_int_risk_installation_cost, vv_var, n = 1) * av_int_cost_installation, value_if_not = 0, n = 1)
+      
+      av_int_setup <- var_panel_cost +
+                      av_int_cost_installation +
+                      var_installation_risk_cost +
                       av_int_cost_training
     }
     else
@@ -94,7 +88,7 @@ model_function <- function(){
       av_int_setup <- 0
     }
     
-    #calculation execution/maintenance costs   
+    ## calculation execution/maintenance costs   
     if (decision_av_int_execution)
     {
       av_int_execution <- av_int_execution_period + 
@@ -107,12 +101,62 @@ model_function <- function(){
     }
  
     
-    av_int_cost <- av_int_execution
-    av_int_cost[1] <- av_int_cost[1] + av_int_setup + av_int_planning
     
+    ## calculation of labour costs
+    if (!decision_av_int){
+      av_int_labour_reduction <- 1
+    }
+    
+    var_labour_costs <- av_int_labour_reduction *
+                        annual_labour *
+                        av_crop_ha *
+                        labour_costs
+    
+    
+    
+    ## calculating overall costs
+    av_int_cost <- av_int_execution
+    av_int_cost[1] <- av_int_cost[1] + av_int_setup + av_int_planning + var_labour_costs
+ 
+
+    
+## benefit calculations
+
+    
+    ## calculating energy yield with low quality risk
+    var_lowpanelquality_risk_reduction = chance_event(chance = av_int_risk_panellowquality, value_if = vv(av_int_risk_panellowquality_reduction, vv_var, n = 1), value_if_not = 1, n = 1)
+    av_energy_yield <-  vv(av_ha, c(0, 0), n_years) *
+                        vv(av_energy_yield_kwp_ha, vv_var, n_years) *
+                        var_lowpanelquality_risk_reduction
+    
+    av_energy_pump <-   vv(av_int_annual_irrigation, vv_var, n_years) *
+                        vv(av_int_pump_energy, vv_var, n_years) *
+                        vv(av_crop_ha, c(0, 0), n_years)
+    
+    # calculating variables if energy demand for irrigation is higher than energy yield
+    if (av_energy_pump > av_energy_yield){
+      av_energy_pump <- av_energy_yield
+    }
+
+    # calculating profit from energy yield and pump demand
+    av_energy_profit <- (av_energy_yield - av_energy_pump) * av_energy_profit_EUR_kwp
+    
+    
+    
+    ## calculating crop yield
+    av_crop_yield <-  vv(av_crop_ha, c(0, 0), n_years) *
+      vv(av_crop_yield_t_ha, vv_var, n_years) *
+      vv(av_crop_profit_EUR_t, vv_var, n_years)
+    
+    
+    ##
+    
+    
+    ## calculation of resulting benefits
     if(decision_av_int)
     {
-      total_benefits <- av_crop_yield + av_energy_yield
+      # chance event if low quality panel risk occurs and variation of reduction with vv function
+      total_benefits <- av_crop_yield + av_energy_profit
     }
     
     else
