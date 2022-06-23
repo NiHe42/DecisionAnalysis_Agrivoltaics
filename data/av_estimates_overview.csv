@@ -25,7 +25,7 @@
 "24","av_int_risk_installation_cost",0.01,NA,5.0,"posnorm","AV facility erroneous [%]","Percentage of installation that needs to be redone"
 "25","av_int_risk_panellowquality",0.05,NA,0.1,"posnorm","Chance of low quality panels [%]","Chance that the AV panels are of low quality"
 "26","av_int_risk_panellowquality_reduction",0.7,NA,0.95,"posnorm","Reduced energy yield [%]","Reduction of energy yield through low quality panels"
-"27","labour_costs",1.5,NA,2.5,"posnorm","Labour costs [€/day]","Dayly labour costs"
+"27","labour_costs",1.5,NA,1.9,"posnorm","Labour costs [€/day]","Dayly labour costs"
 "28","annual_labour",600,NA,900,"posnorm","Annual labour [days/ha]","Annual labour per ha"
 "29","av_int_labour_reduction",0.7,NA,0.95,"posnorm","Reduced labour [%]","Reduced labour through AV-irrigation"
 "30","av_int_pump_energy",0.15,NA,0.18,"posnorm","Energy need pump [kWh/m^3]","Annual energy demand for pump at 7500m^3"
