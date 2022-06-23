@@ -102,21 +102,25 @@ model_function <- function(){
  
     
     
-    ## calculation of labour costs
-    if (!decision_av_int){
-      av_int_labour_reduction <- 1
+    ## calculation of labour costs and labour reduction through av intervention
+    if (decision_av_int){
+      var_labour_reduction <- vv(av_int_labour_reduction, vv_var, n_years)
     }
     
-    var_labour_costs <- av_int_labour_reduction *
-                        annual_labour *
-                        av_crop_ha *
-                        labour_costs
+    else {
+      var_labour_reduction <- vv(c(1, 1), c(0, 0), n_years)
+    }
+    
+    var_labour_costs <- var_labour_reduction * 
+                        vv(av_crop_ha, c(0, 0), n_years) *
+                        vv(annual_labour, vv_var, n_years) *
+                        vv(labour_costs, vv_var, n_years)
     
     
     
     ## calculating overall costs
-    av_int_cost <- av_int_execution
-    av_int_cost[1] <- av_int_cost[1] + av_int_setup + av_int_planning + var_labour_costs
+    av_int_cost <- av_int_execution  + var_labour_costs
+    av_int_cost[1] <- av_int_cost[1] + av_int_setup + av_int_planning
  
 
     
@@ -139,14 +143,25 @@ model_function <- function(){
     }
 
     # calculating profit from energy yield and pump demand
-    av_energy_profit <- (av_energy_yield - av_energy_pump) * av_energy_profit_EUR_kwp
+    var_av_energy_profit <- (av_energy_yield - av_energy_pump) * av_energy_profit_EUR_kwp
     
     
     
     ## calculating crop yield
+    
+    # calculating factor for yield through extra av irrigation
+    if (decision_av_int){
+      var_irrigation_factor = vv(av_int_irrigation_factor, vv_var, n_years)
+    }
+    
+    else {
+      var_irrigation_factor = vv(c(1, 1), c(0, 0), n_years)
+    }
+    
     av_crop_yield <-  vv(av_crop_ha, c(0, 0), n_years) *
-      vv(av_crop_yield_t_ha, vv_var, n_years) *
-      vv(av_crop_profit_EUR_t, vv_var, n_years)
+                      vv(av_crop_yield_t_ha, vv_var, n_years) *
+                      vv(av_crop_profit_EUR_t, vv_var, n_years) *
+                      var_irrigation_factor
     
     
     ##
@@ -156,7 +171,7 @@ model_function <- function(){
     if(decision_av_int)
     {
       # chance event if low quality panel risk occurs and variation of reduction with vv function
-      total_benefits <- av_crop_yield + av_energy_profit
+      total_benefits <- av_crop_yield + var_av_energy_profit
     }
     
     else
