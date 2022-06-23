@@ -24,7 +24,7 @@
 "23","av_int_risk_installation",0.1,NA,0.2,"posnorm","Chance of installation errors [%]","Chance that errors occour during installation of AV facility"
 "24","av_int_risk_installation_cost",0.01,NA,5.0,"posnorm","AV facility erroneous [%]","Percentage of installation that needs to be redone"
 "25","av_int_risk_panellowquality",0.05,NA,0.1,"posnorm","Chance of low quality panels [%]","Chance that the AV panels are of low quality"
-"26","av_int_risk_panellowquality_reduction",0.05,NA,0.3,"posnorm","Reduced energy yield [%]","Reduction of energy yield through low quality panels"
+"26","av_int_risk_panellowquality_reduction",0.7,NA,0.95,"posnorm","Reduced energy yield [%]","Reduction of energy yield through low quality panels"
 
 
 
