@@ -28,7 +28,7 @@
 "27","labour_costs",1.5,NA,1.9,"posnorm","Labour costs [€/day]","Daily labour costs"
 "28","annual_labour",100,NA,170,"posnorm","Annual labour [days/ha]","Annual labour per ha"
 "29","av_int_labour_reduction",0.7,NA,0.95,"posnorm","Reduced labour [%]","Reduced labour through AV-irrigation"
-"30","av_int_pump_energy",0.15,NA,0.18,"posnorm","Energy need pump [kWh/m^3]","Annual energy demand for pump at 7500m^3"
+"30","av_int_pump_energy",0.15,NA,0.18,"posnorm","Energy need pump [kWh/m^3]","Energy demand for pump per m^3"
 "31","av_int_annual_irrigation",6000,NA,8000,"posnorm","Annual irrigation [m^3/ha]","Average annual irrigation for a ha"
 "32","av_int_irrigation_factor",1.5,NA,2,"posnorm","Increased yield [%]","Increased yield through irrigation"
 
