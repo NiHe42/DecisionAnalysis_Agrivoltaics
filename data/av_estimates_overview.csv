@@ -30,5 +30,5 @@
 "29","av_int_labour_reduction",0.7,NA,0.95,"posnorm","Reduced labour [%]","Reduced labour through AV-irrigation"
 "30","av_int_pump_energy",0.15,NA,0.18,"posnorm","Energy need pump [kWh/m^3]","Energy demand for pump per m^3"
 "31","av_int_annual_irrigation",6000,NA,8000,"posnorm","Annual irrigation [m^3/ha]","Average annual irrigation for a ha"
-"32","av_int_irrigation_factor",1.5,NA,2,"posnorm","Increased yield [%]","Increased yield through irrigation"
+"32","av_int_irrigation_factor",1.4,NA,2,"posnorm","Increased yield [%]","Increased yield through irrigation"
 
