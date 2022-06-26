@@ -101,11 +101,13 @@
 
 33	av_shadedcrop_yield	5	NA	1	posnorm	Yield of AV crop [t/ha]	Crops that are grown under the AV panels
 - Please estimate the annual yield of crops that are grown under agrivoltaic panels in tons per ha.
+- Please estimate the annual yield of tomatos that are grown under agrivoltaic panels in tons per ha.
 
 
 34	av_shadedcrop_profit	850	NA	1050	posnorm	Market price of AV crop [€/t]	Price of crops that grown under AV panels
 - Please estimate a range for the market price of crops that are grown under agrivoltaic panels.
 - Please estimate a range for the market price of crops that can be grown under agrivoltaic panels.
+- Please estimate the range of market price for tomatoes in Westafrica
 
 35	av_int_risk_maintenance	5	NA	3	posnorm	Risk of bad maintenance [%]	Risk that AV facility is bad maintained
 - Please estimate the percentage risk that the agrivoltaic facility is badly maintained.
