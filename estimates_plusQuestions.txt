@@ -10,10 +10,11 @@
 
 4	av_risk_drought	1	NA	2	posnorm	Risk of drought event [%]	Chance for drought
 - Please estimate the percentage risk, that a severe drought occurs for a single year.
-
+- Please estimate how many of the past 20 years have seen severe droughts. 
 
 5	av_effects_drought	5	NA	9	posnorm	Effect of drought on yield [%]	Effects of drought on irrigation/yield of standard farm
 - Please estimate the effects of a severe drought on the yield of a standard farm.
+- Please estimate the changes in a standard farm's yield due to severe droughts.
 
 7	av_crop_yield_t_ha	5	NA	15	posnorm	Yield millet  [t/ha]	Yield of millet
 - Please estimate a range for the yield [t/ha] of millet for a standard farm.
@@ -26,6 +27,7 @@
 10	av_energy_yield_kwp_ha	160	NA	240	posnorm	Energy yield [kWp/ha]	Energy yield of AV per ha
 - Please estimate a range for the energy yield [kWp/ha] of photovoltaic systems.
 - Please estimate a range for the energy yield [kWp/ha] of agrivoltaic systems.
+- Please estimate the range of energy yield by a photovoltaic panel with a size of 2m^2
 
 11	av_energy_profit_EUR_kwp	170	NA	230	posnorm	Energy price [€/kWp]	Grid energy price
 - Please estimate a range for the grid energy price [€/kWp].
@@ -47,12 +49,14 @@
 
 16	av_int_cost_installation	100	NA	2000	posnorm	av_int_cost_installation	av_int_cost_installation
 - Please estimate the range of costs for installing a agrivoltaic system for a photovoltaic panels in an area of X.
+- Please estimate the range of costs for the installation of an agrivoltaic system on the area of 1ha with 2m^2 panels. 
 
 17	av_int_cost_training	30	NA	100	posnorm	av_int_cost_training	av_int_cost_training
 - Please estimate the range of the intital costs for training the farmers to mantain the agrivoltaic system.
 
 18	av_int_cost_reparation	50	NA	300	posnorm	av_int_cost_reparation	av_int_cost_reparation
 - Please estimate the range of costs for annual reparation.
+- Please estimate the range of annual costs for general maintenance of an agrivoltaic system (e.g. repairs, cleaning, preventive maintenance etc.)
 
 19	av_int_benefit_shade	1	NA	9	posnorm	av_int_benefit_shade	av_int_benefit_shade
 - Please estimate the monetary benefits of the shading from the agrivoltaic panels for the farm worker.
@@ -83,6 +87,7 @@
 29	av_int_labour_reduction	7	NA	95	posnorm	Reduced labour [%]	Reduced labour through AV-irrigation
 - Please estimate the percentage of labour reduction due to irrigation.
 - Please estimate the percentage of labour reduction due to irrigation of plants under agrivoltaics.
+- Please estimate the percentage change in labour after installation of an Agrivoltaic system 
 
 30	av_int_pump_energy	15	NA	18	posnorm	Energy need pump [kWh/m^3]	Energy demand for pump per m^3
 - Please estimate the range for the energy demand for a standar pump per m^3.
