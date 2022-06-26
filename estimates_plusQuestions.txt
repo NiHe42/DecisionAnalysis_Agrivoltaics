@@ -42,6 +42,7 @@
 14	av_int_cost_photovoltaic_panels	800	NA	1500	posnorm	All costs of AV facility [€/kWp]	Costs for AV panels, ground preparation, construction...
 - Please estimate the range of the costs for preparing the ground for the agrivoltaic intervention on an area of X.
 - Please estimate the range of the costs for preparing the ground and the environment for the agrivoltaic intervention on an area of X.
+- Please estimate the range of costs for preparing the ground and the environment to install an agrivoltaic system per ha. 
 
 15	yield_loss	9	NA	94	posnorm	Remaining yield after harvest [%]	Remaining yield through post harvest losses
 - Please estimate the percentage of remaining yield after harvest for a standard farm.
@@ -60,6 +61,7 @@
 
 19	av_int_benefit_shade	1	NA	9	posnorm	av_int_benefit_shade	av_int_benefit_shade
 - Please estimate the monetary benefits of the shading from the agrivoltaic panels for the farm worker.
+- Please estimate the water savings due to shading under agrivoltaic systemen when cultivating tomatoes. 
 
 20	discount	1	NA	5	posnorm	discount	Estimate from class example
 21	vv_var	5	NA	20	posnorm	vv_var	Estimate from class example
