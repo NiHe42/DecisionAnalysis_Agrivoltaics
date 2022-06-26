@@ -1,0 +1,109 @@
+1	av_int_no_involvement_by_population	1	NA	3	posnorm	Probability of population not involves	Estimate from class example
+
+- Please estimate the percentage risk, that the community will not help with the implementation of the agrivoltaic intervention.
+- Please estimate the percentage risk, that the people living around the place of intervention will not help with the implementation of the agrivoltaics.
+
+
+2	av_int_no_involvement_by_institution	5	NA	2	posnorm	Probability of institution not involves	Orientated to no inv population
+- Please estimate the percentage risk, that the institution (NGO) will not help with the implementation of the agrivoltaic intervention.
+
+
+4	av_risk_drought	1	NA	2	posnorm	Risk of drought event [%]	Chance for drought
+- Please estimate the percentage risk, that a severe drought occurs for a single year.
+
+
+5	av_effects_drought	5	NA	9	posnorm	Effect of drought on yield [%]	Effects of drought on irrigation/yield of standard farm
+- Please estimate the effects of a severe drought on the yield of a standard farm.
+
+7	av_crop_yield_t_ha	5	NA	15	posnorm	Yield millet  [t/ha]	Yield of millet
+- Please estimate a range for the yield [t/ha] of millet for a standard farm.
+
+8	av_crop_profit_EUR_t	380	NA	530	posnorm	Market price millet [€/t]	Market price of millet
+- Please estimate a range for the market price [€/t] for millet. 
+
+9	av_ha	5	NA	5	const	av_energy_ha	Size of AV facility [ha]
+
+10	av_energy_yield_kwp_ha	160	NA	240	posnorm	Energy yield [kWp/ha]	Energy yield of AV per ha
+- Please estimate a range for the energy yield [kWp/ha] of photovoltaic systems.
+- Please estimate a range for the energy yield [kWp/ha] of agrivoltaic systems.
+
+11	av_energy_profit_EUR_kwp	170	NA	230	posnorm	Energy price [€/kWp]	Grid energy price
+- Please estimate a range for the grid energy price [€/kWp].
+
+12	av_int_cost_search_panels	50	NA	250	posnorm	av_int_cost_search_panels	av_int_cost_search_panels
+- Please estimate the range of the costs for finding suitable photovoltaic panels.  
+- Please estimate the range of the costs for searching suitable photovoltaic panels.
+
+13	av_int_cost_search_location	50	NA	100	posnorm	av_int_cost_search_location	av_int_cost_search_location
+- Please estimate the range of the costs for finding a suitable location for the agrivoltaic intervention.
+
+14	av_int_cost_photovoltaic_panels	800	NA	1500	posnorm	All costs of AV facility [€/kWp]	Costs for AV panels, ground preparation, construction...
+- Please estimate the range of the costs for preparing the ground for the agrivoltaic intervention on an area of X.
+- Please estimate the range of the costs for preparing the ground and the environment for the agrivoltaic intervention on an area of X.
+
+15	yield_loss	9	NA	94	posnorm	Remaining yield after harvest [%]	Remaining yield through post harvest losses
+- Please estimate the percentage of remaining yield after harvest for a standard farm.
+- Please estimate the yield after post harvest losses for a standard farm.
+
+16	av_int_cost_installation	100	NA	2000	posnorm	av_int_cost_installation	av_int_cost_installation
+- Please estimate the range of costs for installing a agrivoltaic system for a photovoltaic panels in an area of X.
+
+17	av_int_cost_training	30	NA	100	posnorm	av_int_cost_training	av_int_cost_training
+- Please estimate the range of the intital costs for training the farmers to mantain the agrivoltaic system.
+
+18	av_int_cost_reparation	50	NA	300	posnorm	av_int_cost_reparation	av_int_cost_reparation
+- Please estimate the range of costs for annual reparation.
+
+19	av_int_benefit_shade	1	NA	9	posnorm	av_int_benefit_shade	av_int_benefit_shade
+- Please estimate the monetary benefits of the shading from the agrivoltaic panels for the farm worker.
+
+20	discount	1	NA	5	posnorm	discount	Estimate from class example
+21	vv_var	5	NA	20	posnorm	vv_var	Estimate from class example
+22	n_years	30	NA	30	const	n_years	n_years
+
+23	av_int_risk_installation	1	NA	2	posnorm	Chance of installation errors [%]	Chance that errors occour during installation of AV facility
+- Please estimate the percentage risk that errors occour during the installation of the agrivoltaic system.
+
+24	av_int_risk_installation_cost	1	NA	50	posnorm	AV facility erroneous [%]	Percentage of installation that needs to be redone
+- Please estimate the percentage risk that the installation of the agrivoltaic system needs to be redone due to errors
+
+25	av_int_risk_panellowquality	5	NA	1	posnorm	Chance of low quality panels [%]	Chance that the AV panels are of low quality
+- Please estimate the percentage chance that the photovoltaic panels are of low quality.
+
+26	av_int_risk_panellowquality_reduction	7	NA	95	posnorm	Reduced energy yield [%]	Reduction of energy yield through low quality panels
+- Please estimate the percentage of energy yield reduction due to low quality photovoltaic panels.
+
+27	labour_costs	15	NA	19	posnorm	Labour costs [€/day]	Daily labour costs
+- Please estimate the range of costs for daily labour in €.
+- Please estimate the range of costs for daily labour in € for all workers of a farm.
+
+28	annual_labour	100	NA	170	posnorm	Annual labour [days/ha]	Annual labour per ha
+- Please estimate the annual labour per ha for a standard farm.
+
+29	av_int_labour_reduction	7	NA	95	posnorm	Reduced labour [%]	Reduced labour through AV-irrigation
+- Please estimate the percentage of labour reduction due to irrigation.
+- Please estimate the percentage of labour reduction due to irrigation of plants under agrivoltaics.
+
+30	av_int_pump_energy	15	NA	18	posnorm	Energy need pump [kWh/m^3]	Energy demand for pump per m^3
+- Please estimate the range for the energy demand for a standar pump per m^3.
+
+31	av_int_annual_irrigation	6000	NA	8000	posnorm	Annual irrigation [m^3/ha]	Average annual irrigation for a ha
+- Please estimate the range for annual water demand for irrigation in m^3 per ha.
+- Please estimate the range for annual irrigation in m^3 per ha.
+
+32	av_int_irrigation_factor	14	NA	2	posnorm	Increased yield [%]	Increased yield through irrigation
+- Please estimate the percentage of increased yield due to irrigation.
+
+33	av_shadedcrop_yield	5	NA	1	posnorm	Yield of AV crop [t/ha]	Crops that are grown under the AV panels
+- Please estimate the annual yield of crops that are grown under agrivoltaic panels in tons per ha.
+
+
+34	av_shadedcrop_profit	850	NA	1050	posnorm	Market price of AV crop [€/t]	Price of crops that grown under AV panels
+- Please estimate a range for the market price of crops that are grown under agrivoltaic panels.
+- Please estimate a range for the market price of crops that can be grown under agrivoltaic panels.
+
+35	av_int_risk_maintenance	5	NA	3	posnorm	Risk of bad maintenance [%]	Risk that AV facility is bad maintained
+- Please estimate the percentage risk that the agrivoltaic facility is badly maintained.
+
+36	av_int_risk_maintenance_costs	1	NA	5	posnorm	Additional maintenance costs [%]	Additional costs for reparation through bad maintenance
+- Please estimate the percentage of additional costs for maintenance due to bad maintenance.
