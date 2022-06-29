@@ -4,12 +4,13 @@ input_estimates <- read.csv("data/av_estimates_overview.csv", header = TRUE)
 
 as.estimate(input_estimates)
 
-input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$lower = 0.01
-input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$upper = 0.2
-input_estimates[input_estimates$variable == 'av_int_risk_installation',]$lower = 0.1
-input_estimates[input_estimates$variable == 'av_int_risk_installation',]$upper = 0.2
-input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$lower = 0.1
-input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$upper = 0.2
+# check influence of different values for risks
+#input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$lower = 0.3
+#input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$upper = 0.4
+#input_estimates[input_estimates$variable == 'av_int_risk_installation',]$lower = 0.3
+#input_estimates[input_estimates$variable == 'av_int_risk_installation',]$upper = 0.4
+#input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$lower = 0.3
+#input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$upper = 0.4
 
 
 model_function <- function(){
