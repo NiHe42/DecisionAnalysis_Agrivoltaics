@@ -4,6 +4,13 @@ input_estimates <- read.csv("data/av_estimates_overview.csv", header = TRUE)
 
 as.estimate(input_estimates)
 
+input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$lower = 0.01
+input_estimates[input_estimates$variable == 'av_int_risk_maintenance',]$upper = 0.2
+input_estimates[input_estimates$variable == 'av_int_risk_installation',]$lower = 0.1
+input_estimates[input_estimates$variable == 'av_int_risk_installation',]$upper = 0.2
+input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$lower = 0.1
+input_estimates[input_estimates$variable == 'av_int_risk_panellowquality',]$upper = 0.2
+
 
 model_function <- function(){
   
@@ -69,7 +76,7 @@ model_function <- function(){
     if (decision_av_int_setup)
     {
       # panel costs by €/kwp * ha * kwp/ha
-      var_panel_cost = (av_int_cost_photovoltaic_panels * av_ha * av_energy_yield_kwp_ha)
+      var_panel_cost = (av_int_cost_photovoltaic_panels * av_ha)
       # chance event if installation risk occurs and variation of costs with vv function
       var_installation_risk_cost = chance_event(chance = av_int_risk_installation, value_if = vv(av_int_risk_installation_cost, vv_var, n = 1) * av_int_cost_installation, value_if_not = 0, n = 1)
       
