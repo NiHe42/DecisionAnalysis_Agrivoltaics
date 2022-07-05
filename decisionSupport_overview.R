@@ -208,7 +208,8 @@ model_function <- function(){
   
   # Generate the list of outputs from the Monte Carlo simulation
   return(list(NPV = NPV,
-              NPV_int = NPV_int))
+              NPV_int = NPV_int,
+              NPV_decision_do = NPV_int - NPV))
 }
 
 
@@ -223,3 +224,24 @@ plot_distributions(mcSimulation_object = example_mc_simulation,
                    vars = c("NPV", "NPV_int"),
                    method = "smooth_simple_overlay",
                    base_size = 7)
+
+
+# Calculation of EVPI 
+# data frame with variables from model_function for NPV_decision_do
+evpi_table <- data.frame(example_mc_simulation$x, example_mc_simulation$y[3])
+
+evpi_decision <- multi_EVPI(mc = evpi_table, 
+                        first_out_var = "av_int_annual_irrigation")
+
+plot_evpi(evpi_decision, decision_vars = "NPV_decision_do")
+
+
+
+#Projection to Latent Structures (PLS) analysis
+#VIP
+
+pls_result <- plsr.mcSimulation(object = example_mc_simulation,
+                                resultName = names(example_mc_simulation$y[3]), ncomp=1)
+plot_pls(pls_result, input_table = input_estimates, threshold = 1)
+
+
