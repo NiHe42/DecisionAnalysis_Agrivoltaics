@@ -209,7 +209,8 @@ model_function <- function(){
   # Generate the list of outputs from the Monte Carlo simulation
   return(list(NPV = NPV,
               NPV_int = NPV_int,
-              NPV_decision_do = NPV_int - NPV))
+              NPV_decision = NPV_int - NPV,
+              Cashflow_decision = result_int - result))
 }
 
 
@@ -231,10 +232,11 @@ plot_distributions(mcSimulation_object = example_mc_simulation,
 evpi_table <- data.frame(example_mc_simulation$x, example_mc_simulation$y[3])
 
 evpi_decision <- multi_EVPI(mc = evpi_table, 
-                        first_out_var = "av_int_annual_irrigation")
+                        first_out_var = "NPV_decision")
 
-plot_evpi(evpi_decision, decision_vars = "NPV_decision_do")
+evpi_decision
 
+plot_evpi(evpi_decision, decision_vars = "NPV_decision" ,base_size = 15)
 
 
 #Projection to Latent Structures (PLS) analysis
@@ -242,6 +244,10 @@ plot_evpi(evpi_decision, decision_vars = "NPV_decision_do")
 
 pls_result <- plsr.mcSimulation(object = example_mc_simulation,
                                 resultName = names(example_mc_simulation$y[3]), ncomp=1)
-plot_pls(pls_result, input_table = input_estimates, threshold = 1)
+pls_result
+plot_pls(pls_result, input_table = input_estimates, threshold = 1, base_size = 15, x_axis_name = "Variable Importance in Projection (VIP)")
 
+#Cashflow analysis
+
+plot_cashflow(mcSimulation_object = example_mc_simulation, cashflow_var_name = "Cashflow_decision")
 
