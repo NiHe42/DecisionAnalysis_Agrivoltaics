@@ -131,9 +131,9 @@ model_function <- function(){
     
     
     ## calculating energy yield with low quality panel risk
-    var_lowpanelquality_risk_reduction = chance_event(chance = av_int_risk_panellowquality, value_if = vv(av_int_risk_panellowquality_reduction, vv_var, n = 1), value_if_not = 1, n = 1)
+    var_lowpanelquality_risk_reduction = chance_event(chance = av_int_risk_panellowquality, value_if = vv(av_int_risk_panellowquality_reduction, vv_var, n = 1, upper_limit = 1), value_if_not = 1, n = 1)
     av_energy_yield <-  vv(av_ha, c(0, 0), n_years) *
-      vv(av_energy_yield_kwp_ha, vv_var, n_years) *
+      vv(av_energy_yield_kwp_ha, vv_var, n_years, relative_trend = -3) *
       var_lowpanelquality_risk_reduction
     
     av_energy_pump <-   vv(av_int_annual_irrigation, vv_var, n_years) *
