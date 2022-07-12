@@ -35,4 +35,5 @@
 "34","av_shadedcrop_profit",850,NA,1050,"posnorm","Market price of AV crop [€/t]","Price of crops that grown under AV panels"
 "35","av_int_risk_maintenance",0.05,NA,0.3,"posnorm","Risk of bad maintenance [%]","Risk that AV facility is bad maintained"
 "36","av_int_risk_maintenance_costs",0.1,NA,5,"posnorm","Additional maintenance costs [%]","Additional costs for reparation through bad maintenance"
+"37","panel_performance_reduction",0.006,NA,0.008,"posnorm","Reduction of AV performance [%]","Reduction of panel performance over years"
 
