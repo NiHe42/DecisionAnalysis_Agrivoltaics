@@ -1,0 +1,45 @@
+---
+title:  "Decision analysis of agriphotovoltaic for smallholders"
+author: Annicka Laudenberg, Nils Heidenkamp, Julian Bauer, Michèle Hönicke
+output:  
+    html_document:
+      theme: cerulean
+    toc: true
+    toc_depth: 2
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(decisionSupport)
+library(readr)
+```
+```{asis, echo=FALSE}
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```
+
+# **Introduction**
+
+
+
+
+
+# **Methods**
+
+## Input Estimates
+## Conceptual Model 
+## Questionnaire
+## Code 
+## Probabilistic analysis
+
+
+# **Results and Discussion**
+
+## Net Present Value (NPV) distributions
+## EVPI, VIP and Cashflow
+## Uncertainties and Issues
+
+# **Conclusion**
+
+

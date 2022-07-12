@@ -227,6 +227,12 @@ plot_distributions(mcSimulation_object = example_mc_simulation,
                    base_size = 7)
 
 
+#difference in NPV between do and do not do
+plot_distributions(mcSimulation_object = example_mc_simulation,
+                   vars = c("NPV_decision"),
+                   method = "smooth_simple_overlay",
+                   base_size = 7)
+
 # Calculation of EVPI 
 # data frame with variables from model_function for NPV_decision_do
 evpi_table <- data.frame(example_mc_simulation$x, example_mc_simulation$y[3])
