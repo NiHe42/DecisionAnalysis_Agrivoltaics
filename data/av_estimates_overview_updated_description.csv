@@ -1,0 +1,38 @@
+Column1;variable;lower;median;upper;distribution;label;Description
+1;av_int_no_involvement_by_population;1;NA;3;posnorm;Probability of non-involvement of community [%];Probability that the project fails due to non-involvement of the community in which the project is executed
+2;av_int_no_involvement_by_institution;5;NA;2;posnorm;Probability of non-involvement of institutions [%];Probability that the project fails due to non-involvement of the institutions which should have helped with the execution of the project 
+3;av_int_event_photovoltaic_panels;1;NA;15;posnorm;av_int_event_photovoltaic_panels;Probability for the event that the photovoltaic panels are damaged (not used at the moment)
+4;av_risk_drought;1;NA;2;posnorm;Risk of drought event [%];Probability that a drought event occurs
+5;av_effects_drought;5;NA;9;posnorm;Effect of drought on yield [%];Decrease of yield and effects on irrigation in percentage due to drought event
+6;av_crop_ha;8;NA;8;const;Farm area [ha];Parts of the farm in which crops are growing in hectar
+7;av_crop_yield_t_ha;5;NA;15;posnorm;Yield millet  [t/ha];Yield of millet in tons per hectar
+8;av_crop_profit_EUR_t;380;NA;530;posnorm;Market price millet [€/t];Market price of millet
+9;av_ha;5;NA;5;const;Area with panels [ha];Area with photovoltaic panels in ha
+10;av_energy_yield_kwp_ha;9000;NA;10000;posnorm;Annual energy yield [kWh/ha];Annual energy yield of the photovoltaic panels per hectar
+11;av_energy_profit_EUR_kwp;17;NA;23;posnorm;Energy price [€/kWh];Grid energy price
+12;av_int_cost_search_panels;50;NA;250;posnorm;Costs for searching suitable panels [€];Costs for the search of suitable photovoltaic panels
+13;av_int_cost_search_location;50;NA;100;posnorm;Costs for searching a suitable location [€];Costs for the search of a suitable location for the panel installation
+14;av_int_cost_photovoltaic_panels;900000;NA;1100000;posnorm;All costs of AV facility [€/ha];Costs for photovoltaic panels, ground preparation, construction...
+15;yield_loss;9;NA;94;posnorm;Remaining yield after harvest [%];Remaining yield through post harvest losses in percent
+16;av_int_cost_installation;100;NA;2000;posnorm;Costs for installation [€];Costs for installation of the agrivoltaic system
+17;av_int_cost_training;30;NA;100;posnorm;Costs for training [€];Costs for training maintenance workers
+18;av_int_cost_reparation;50;NA;300;posnorm;Costs for reparation [€];Costs for running reparation tasks
+19;av_int_benefit_shade;1;NA;9;posnorm;Shade benefit;Benefit of the shade of the panels in percent
+20;discount;1;NA;5;posnorm;Discount;Discount value for the model
+21;vv_var;5;NA;20;posnorm;Variance;Variance applied to the values in the model
+22;n_years;30;NA;30;const;Amount of years;Duration of the simulation in years
+23;av_int_risk_installation;1;NA;2;posnorm;Chance of installation errors [%];Chance that errors occour during installation of AV facility
+24;av_int_risk_installation_cost;1;NA;50;posnorm;AV facility erroneous [%];Percentage of installation that needs to be redone
+25;av_int_risk_panellowquality;5;NA;1;posnorm;Chance of low quality panels [%];Chance that the AV panels are of low quality
+26;av_int_risk_panellowquality_reduction;7;NA;95;posnorm;Reduced energy yield [%];Reduction of energy yield through low quality panels
+27;labour_costs;15;NA;19;posnorm;Labour costs [€/day];Daily labour costs
+28;annual_labour;100;NA;170;posnorm;Annual labour [days/ha];Annual labour per ha
+29;av_int_labour_reduction;7;NA;95;posnorm;Reduced labour [%];Reduced labour through AV-irrigation
+30;av_int_pump_energy;15;NA;18;posnorm;Energy need pump [kWh/m^3];Energy demand for pump per m^3
+31;av_int_annual_irrigation;6000;NA;8000;posnorm;Annual irrigation [m^3/ha];Average annual irrigation for a ha
+32;av_int_irrigation_factor;14;NA;2;posnorm;Increased yield [%];Increased yield through irrigation
+33;av_shadedcrop_yield;5;NA;1;posnorm;Yield of AV crop [t/ha];Crops that are grown under the AV panels
+34;av_shadedcrop_profit;850;NA;1050;posnorm;Market price of AV crop [€/t];Price of crops that grown under AV panels
+35;av_int_risk_maintenance;5;NA;3;posnorm;Risk of bad maintenance [%];Risk that AV facility is bad maintained
+36;av_int_risk_maintenance_costs;1;NA;5;posnorm;Additional maintenance costs [%];Additional costs for reparation through bad maintenance
+;;;;;;;
