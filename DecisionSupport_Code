@@ -190,7 +190,7 @@ model_function <- function(){
     
     if (decision_av_int)
     {
-      net_benefits <- total_benefits - av_int_cost + vv(c(150, 450), vv_var, n_years)
+      net_benefits <- total_benefits - av_int_cost
       result_int <- net_benefits
     }   
   }
