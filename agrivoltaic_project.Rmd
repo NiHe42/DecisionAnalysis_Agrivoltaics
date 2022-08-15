@@ -175,7 +175,7 @@ Some variables vary over the 30 years of simulation. This variation was created 
 ### Chance events
 
 Risks were included as chance events with the 'chance_event' function.
-Two of those risks were missing input of the population or institutions which would lead to a failure of the project. This would result in planning costs but no benefits through the AV system.
+Two of those risks were missing input of the population or institutions which would lead to a failure of the project. This would result in planning costs and no benefits through the AV system.
 
 Further risks are 'bad quality of photo voltaic panels' resulting in a lower energy yield than expected, 'bad installation' of the panels and 'bad maintenance' both resulting in higher maintenance costs and 'droughts'. The first three risks reduce the benefits of the AV intervention while 'drought' only has a reducing effect on farms without AV intervention through missing irrigation opportunities.
 
@@ -460,7 +460,7 @@ example_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
 
 The graph and the boxplot shows the NPV difference of the reference farm to the AV farm. The x-axis represents the outcome distribution, the y-axis the density estimate (affected by the number of simulations in a specific outcome range).
 
-The distribution has two peaks. One at around -5000 and one at around +5000 but with a lower density estimate. Both the median and the lower quartile is in a negative range shown by the boxplot.
+The distribution has two peaks. One at around -5000€ and one at around +5000€ but with a lower density estimate. Both the median and the lower quartile is in a negative range shown by the boxplot.
 
 
 ```{r, echo=F, fig.align='center', fig.cap="Difference in NPV between Intervention and no Intervention"}
@@ -469,7 +469,7 @@ plot_distributions(mcSimulation_object = example_mc_simulation,
                    method = 'boxplot_density')
 ```
 <br>
-As there is no external investment included in the model at this point the distribution shows probabilities of monetary costs and benefits of an AV intervention. If e.g. a fixed investment of 10000 is assumed for each simulation the curve would be mostly in a positive outcome distribution. This investment would be the the cost for an institution to achieve all the non-monetary benefits (Section \@ref(agri)) while it would have no negative monetary impacts in most cases anymore for the operators of the AV facility. As the AV facility would be operated for around 30 years an investment of 10000 would mean costs of around 330 for supporting infrastructure, communities and food production mentioned in the sustainable development goals (SDG)[@noauthor_agenda_nodate]. Further it could enable other opportunities as a higher income for farmers could lead to economic growth.
+As there is no external investment included in the model at this point the distribution shows probabilities of monetary costs and benefits of an AV intervention. If e.g. a fixed investment of 10000€ is assumed for each simulation the curve would be mostly in a positive outcome distribution. This investment would be the the cost for an institution to achieve all the non-monetary benefits (Section \@ref(agri)) while it would have no negative monetary impacts in most cases anymore for the operators of the AV facility. As the AV facility would be operated for around 30 years an investment of 10000€ would mean costs of around 330€ for supporting infrastructure, communities and food production mentioned in the sustainable development goals (SDG)[@noauthor_agenda_nodate]. Further it could enable other opportunities as a higher income for farmers could lead to economic growth.
 
 ## EVPI, VIP, Cashflow
 
