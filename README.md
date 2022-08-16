@@ -1,2 +1,2 @@
 # DecisionAnalysis_Agrivoltaics!
-![ConceptualDiagram](https://user-images.githubusercontent.com/105004394/175812936-21cd9f22-2620-4ea4-87b0-bbd856298402.png)
+![Conceptual Model](https://user-images.githubusercontent.com/103245619/184829997-520cbe6b-7d50-470d-bf0c-c9c22ea0cb1b.png)
